@@ -10,5 +10,5 @@ Prereq:
 1. Connection to Nilan through EspHome: https://github.com/Jopand/esphome_components
 2. Config-template-card from https://github.com/iantrich/config-template-card
  
-Animations are made with Powerpoint, then exported from Powerpoint to animtaed gif's and refined using Photoshop.
+Animations are made with Powerpoint, then exported from Powerpoint to animated gif's and refined using Photoshop.
 All files made in Powerpoint and Photoshop are included. Feel free to use and make your own customization - and share your findings/suggestions/results etc. in the Facebook group: https://www.facebook.com/groups/667765647316443
