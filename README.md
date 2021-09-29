@@ -1,4 +1,4 @@
-# nilan
+# Nilan graphics
 Home Assistant: Graphics for Nilan ventilation (use with Lovelace). 
 
 The graphics shows the speed and direction of the air-flow, and the color changes according to states of: Cooling/Heating/Standby. I have the Nilan VPL15, which is only for air-heating/cooling (no water-heating). You might need to adjust the yaml-file if you have other states.
