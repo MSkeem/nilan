@@ -1,0 +1,153 @@
+  - title: Nilan
+    icon: mdi:fan
+    panel: true
+    cards:
+    - type: custom:layout-card
+      layout_type: custom:grid-layout
+      layout:
+          grid-template-columns: 400px 
+          max_cols: 1
+      cards:
+
+      - type: picture-elements
+        view_layout:
+        grid-column: 1
+        image: /local/nilan/house/background.gif
+        title: Ventilation
+        elements:
+          - type: state-label #TOP LEFT CIRCLE
+            entity: sensor.fresh_air_intake_temperature
+            style:
+              top: 13.0%
+              left: 21.5%
+              color: white
+              font-size: 105%
+          - type: 'custom:config-template-card' #TOP LEFT - ANIMATED GIF RELATED TO INLET FAN SPEED 
+            entities:
+            - sensor.inlet_fan_speed
+            variables:
+            - states['sensor.inlet_fan_speed'].state
+            element:
+              type: image 
+              image: "${vars[0] >=95 ? '/local/nilan/top_left/top_left_speed4.gif' : vars[0] >= 78 ? '/local/nilan/top_left/top_left_speed3.gif' : vars[0] >= 58 ? '/local/nilan/top_left/top_left_speed2.gif' : vars[0] > 0 ? '/local/nilan/top_left/top_left_speed1.gif' : '/local/nilan/top_left/top_left_speed0.gif'}"
+            style:
+                left: 29.0%
+                top: 36.62%
+                width: 18.0%
+              
+          - type: state-label #TOP RIGHT CIRCLE
+            entity: sensor.evaporator_temperature
+            style:
+              top: 13.0%
+              left: 79.5%
+              color: white
+              font-size: 105%
+          - type: 'custom:config-template-card' #TOP RIGHT - ANIMATED GIF RELATED TO EXHAUST FAN SPEED 
+            entities:
+            - sensor.exhaust_fan_speed
+            variables:
+            - states['sensor.exhaust_fan_speed'].state
+            element:
+              type: image 
+              image: "${vars[0] >=95 ? '/local/nilan/top_right/top_right_speed4.gif' : vars[0] >= 78 ? '/local/nilan/top_right/top_right_speed3.gif' : vars[0] >= 58 ? '/local/nilan/top_right/top_right_speed2.gif' : vars[0] > 0 ? '/local/nilan/top_right/top_right_speed1.gif' : '/local/nilan/top_right/top_right_speed0.gif'}"
+            style:
+                left: 72.4%
+                top: 36.84%   
+                width: 18.0%
+                
+          - type: state-label #BOTTTOM LEFT CIRCLE
+            entity: sensor.inlet_after_heater_temperature
+            style:
+              top: 80.2%
+              left: 29.0%
+              color: white
+              font-size: 105%                              
+          - type: 'custom:config-template-card'  #BOTTOM LEFT - ANIMATED GIF RELATED TO INLET FAN SPEED
+            entities:
+            - sensor.inlet_fan_speed
+            variables:
+            - states['sensor.inlet_fan_speed'].state
+            element:
+              type: image 
+              image: "${vars[0] >=95 ? '/local/nilan/bottom_left/bottom_left_speed4.gif' : vars[0] >= 78 ? '/local/nilan/bottom_left/bottom_left_speed3.gif' : vars[0] >= 58 ? '/local/nilan/bottom_left/bottom_left_speed2.gif' : vars[0] > 0 ? '/local/nilan/bottom_left/bottom_left_speed1.gif' : '/local/nilan/bottom_left/bottom_left_speed0.gif'}"
+            style:
+                left: 33.0%
+                top: 62.28%
+                width: 10%
+                
+          - type: state-label #BOTTOM RIGHT CIRCLE TEMP
+            entity: sensor.external_room_temperature
+            style:
+              top: 77.2%
+              left: 72.0%
+              color: white
+              font-size: 105%
+          - type: state-label #BOTTOM RIGHT CIRCLE HUMIDITY
+            entity: sensor.humidity
+            style:
+              top: 83.2%
+              left: 72.0%
+              color: white
+              font-size: 105%
+          - type: 'custom:config-template-card'  #BOTTOM RIGHT - ANIMATED GIF RELATED TO EXHAUST FAN SPEED
+            entities:
+            - sensor.exhaust_fan_speed
+            variables:
+            - states['sensor.exhaust_fan_speed'].state
+            element:
+              type: image 
+              image: "${vars[0] >=95 ? '/local/nilan/bottom_right/bottom_right_speed4.gif' : vars[0] >= 78 ? '/local/nilan/bottom_right/bottom_right_speed3.gif' : vars[0] >= 58 ? '/local/nilan/bottom_right/bottom_right_speed2.gif' : vars[0] > 0 ? '/local/nilan/bottom_right/bottom_right_speed1.gif' : '/local/nilan/bottom_right/bottom_right_speed0.gif'}"
+            style:
+                left: 68.4%
+                top: 62.17%
+                width: 10%
+
+          - type: 'custom:config-template-card'  #CENTER CIRCLE - GREY=AUTO/RED=HEAT/BLUE=COOL
+            entities:
+            #- sensor.operation_mode
+            - sensor.control_mode
+            variables:
+            - states['sensor.control_mode'].state
+            element:
+              type: image 
+              image: "${vars[0] === 'Heating' ? '/local/nilan/house/circlecenter_red.gif' : vars[0] === 'Cooling' ? '/local/nilan/house/circlecenter_blue.gif' : '/local/nilan/house/circlecenter_grey.gif'}"
+            style:
+                left: 50.2%
+                top: 50.22%
+                width: 25.6%
+                
+          - type: state-label # CENTER CIRCLE - TARGET TEMP
+            entity: sensor.target_temperature
+            #prefix: "Mode: "
+            style:
+              top: 46.5%
+              left: 50.0%
+              color: white
+              font-size: 120%
+
+          - type: state-label # CENTER CIRCLE - MODE
+            entity: sensor.operation_mode
+            #prefix: "Mode: "
+            style:
+              top: 54.5%
+              left: 50.0%
+              color: white
+              font-size: 120%
+
+          - type: state-label # FAN SPEED
+            entity: sensor.inlet_fan_speed
+            #prefix: "Inlet: "
+            style:
+              top: 51.2%
+              left: 33.0%
+              color: white
+              font-size: 100%
+              
+          - type: state-label # FAN SPEED
+            entity: sensor.exhaust_fan_speed
+            #prefix: "Exhaust: "
+            style:
+              top: 51.2%
+              left: 68.0%
+              color: white
+              font-size: 100%
